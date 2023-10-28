@@ -7,6 +7,40 @@
 
 import SwiftUI
 
+// The notification we'll send when a shake gesture happens.
+extension UIDevice {
+    static let deviceDidShakeNotification = Notification.Name(rawValue: "deviceDidShakeNotification")
+}
+
+//  Override the default behavior of shake gestures to send our notification instead.
+extension UIWindow {
+     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            NotificationCenter.default.post(name: UIDevice.deviceDidShakeNotification, object: nil)
+        }
+     }
+}
+
+// A view modifier that detects shaking and calls a function of our choosing.
+struct DeviceShakeViewModifier: ViewModifier {
+    let action: () -> Void
+
+    func body(content: Content) -> some View {
+        content
+            .onAppear()
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.deviceDidShakeNotification)) { _ in
+                action()
+            }
+    }
+}
+
+// A View extension to make the modifier easier to use.
+extension View {
+    func onShake(perform action: @escaping () -> Void) -> some View {
+        self.modifier(DeviceShakeViewModifier(action: action))
+    }
+}
+
 struct Triangle: Shape {
   func path(in rect: CGRect) -> Path {
     var path = Path()
@@ -96,6 +130,18 @@ struct ContentView: View {
           .frame(width: 350, height: 400))
       .foregroundColor(.black)
       .ignoresSafeArea()
+      .onShake {
+       print("Phone was shaken...")
+        answerNum = Int.random(in: 0...19)
+        angle += 45
+        spin.toggle()
+        isRunning.toggle()
+        if isRunning {
+          startTimer()
+        } else {
+          stopTimer()
+        }
+      }
       Button("Press for your answer") {
         print("Image tapped!")
         answerNum = Int.random(in: 0...19)
