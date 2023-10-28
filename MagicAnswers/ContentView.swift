@@ -51,20 +51,18 @@ struct ContentView: View {
             .offset(y: -40)
           
           Text("\(answers[answerNum])")
-            .multilineTextAlignment(.center)
             .frame(width: 100)
+            .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
             .foregroundStyle(.white)
             .font(.title2)
             .fontWeight(.bold)
             .offset(y: -10)
-          
-          
-        }
+         }
         .opacity(opacityVal)    // << animatable
         .animation(spin ? .easeIn : .easeOut, value: spin)
         .rotation3DEffect(.degrees(spin ? 360 : 0), axis: (x: 0, y: 0, z: 1))
-        .animation(.interpolatingSpring(mass: 1, stiffness: 10, damping: 1, initialVelocity: 5), value: angle)
+        .animation(.interpolatingSpring(mass: 1, stiffness: 5, damping: 2, initialVelocity: 6), value: angle)
         ForEach (1...100, id:\.self) { _ in
           Circle ()
             .foregroundColor(Color (red: 0,
@@ -83,11 +81,11 @@ struct ContentView: View {
                    height: CGFloat.random (in:10...25),
                    alignment: .center)
             .position(CGPoint(x: .random(in: 150...270),
-                              y: .random (in:200...350)))
+                              y: .random (in:250...450)))
         }
       }
       .onAppear {
-        self.scale = 1.2 // default circle scale
+        self.scale = 0.7 // default circle scale
       }
       
       .drawingGroup(opaque: false, colorMode: .linear)
