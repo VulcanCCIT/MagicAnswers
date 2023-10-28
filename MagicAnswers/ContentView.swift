@@ -63,13 +63,16 @@ struct ContentView: View {
   @State private var spin = false
   @State private var angle: Double = 0
   
-  @State private var opacityVal = 0.0
+  @State private var opacityVal = 0.3
   
   @State private var isRunning = false
   
   @State var timeRemaining = 10
   
   @State private var timer: Timer?
+  
+  @State private var feedback = UIImpactFeedbackGenerator(style: .rigid)
+  
   var body: some View {
     VStack {
       Text("Magic Answers")
@@ -131,6 +134,7 @@ struct ContentView: View {
       .foregroundColor(.black)
       .ignoresSafeArea()
       .onShake {
+      feedback.impactOccurred()
        print("Phone was shaken...")
         answerNum = Int.random(in: 0...19)
         angle += 45
@@ -169,6 +173,7 @@ struct ContentView: View {
     opacityVal = -0.2
     timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
       if timeRemaining > 0 {
+        feedback.impactOccurred()
         opacityVal += 0.1
         timeRemaining -= 1
       } else {
