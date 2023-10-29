@@ -63,11 +63,11 @@ struct ContentView: View {
   @State private var spin = false
   @State private var angle: Double = 0
   
-  @State private var opacityVal = 0.3
+  @State private var opacityVal = 0.7
   
   @State private var isRunning = false
   
-  @State var timeRemaining = 10
+  @State var timeRemaining = 8
   
   @State private var timer: Timer?
   
@@ -96,7 +96,7 @@ struct ContentView: View {
             .fontWeight(.bold)
             .offset(y: -10)
          }
-        .opacity(opacityVal)    // << animatable
+        .opacity(opacityVal)
         .animation(spin ? .easeIn : .easeOut, value: spin)
         .rotation3DEffect(.degrees(spin ? 360 : 0), axis: (x: 0, y: 0, z: 1))
         .animation(.interpolatingSpring(mass: 1, stiffness: 5, damping: 2, initialVelocity: 6), value: angle)
@@ -115,14 +115,14 @@ struct ContentView: View {
           
             .scaleEffect(self.scale * .random(in: 0.1...3))
             .frame(width: .random(in: 1...20),
-                   height: CGFloat.random (in:10...25),
+                   height: CGFloat.random (in: 10...25),
                    alignment: .center)
             .position(CGPoint(x: .random(in: 150...270),
-                              y: .random (in:250...450)))
+                              y: .random (in: 250...425)))
         }
       }
       .onAppear {
-        self.scale = 0.7 // default circle scale
+        self.scale = 0.5 // default circle scale
       }
       
       .drawingGroup(opaque: false, colorMode: .linear)
@@ -170,21 +170,22 @@ struct ContentView: View {
   }//body
  
   func startTimer() {
-    opacityVal = -0.2
+    opacityVal = -0.5
     timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
       if timeRemaining > 0 {
         feedback.impactOccurred()
-        opacityVal += 0.1
+        opacityVal += 0.17
         timeRemaining -= 1
       } else {
         stopTimer()
+        //opacityVal = 0.7
        }
     }
   }
   
   func stopTimer() {
     timer?.invalidate()
-    timeRemaining = 10
+    timeRemaining = 8
     isRunning = false
   }
   
