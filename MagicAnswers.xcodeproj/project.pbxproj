@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635C1B502AF02C6F0080BE29 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C1B4F2AF02C6F0080BE29 /* BubbleView.swift */; };
 		6385EFA82AEDA0C600414C51 /* MagicAnswersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EFA72AEDA0C600414C51 /* MagicAnswersApp.swift */; };
 		6385EFAA2AEDA0C600414C51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EFA92AEDA0C600414C51 /* ContentView.swift */; };
 		6385EFAC2AEDA0C700414C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6385EFAB2AEDA0C700414C51 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		635C1B4F2AF02C6F0080BE29 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		6385EFA42AEDA0C600414C51 /* MagicAnswers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicAnswers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6385EFA72AEDA0C600414C51 /* MagicAnswersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicAnswersApp.swift; sourceTree = "<group>"; };
 		6385EFA92AEDA0C600414C51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				6385EFA72AEDA0C600414C51 /* MagicAnswersApp.swift */,
 				6385EFA92AEDA0C600414C51 /* ContentView.swift */,
+				635C1B4F2AF02C6F0080BE29 /* BubbleView.swift */,
 				6385EFAB2AEDA0C700414C51 /* Assets.xcassets */,
 				6385EFAD2AEDA0C700414C51 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635C1B502AF02C6F0080BE29 /* BubbleView.swift in Sources */,
 				6385EFAA2AEDA0C600414C51 /* ContentView.swift in Sources */,
 				6385EFA82AEDA0C600414C51 /* MagicAnswersApp.swift in Sources */,
 			);
