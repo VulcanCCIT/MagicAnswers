@@ -28,7 +28,7 @@ struct BubbleView: View {
                    height: CGFloat.random (in: 10...25),
                    alignment: .center)
             .position(CGPoint(x: .random(in: 130...280),
-                              y: .random (in: 250...425)))
+                              y: .random (in: 200...375)))
         }
       }
       .onAppear { self.scale = 0.5 } // default circle scale
